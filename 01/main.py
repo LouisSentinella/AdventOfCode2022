@@ -1,11 +1,12 @@
 from elfy.elf import Elf
 current_calories = []
 elves = []
-for line in open("input.txt", "r"):
-    if line != '\n':
+for line in open("dummy_input.txt", "r"):
+    if line.strip() != '':
         current_calories.append(int(line))
     else:
-        elves.append(Elf(current_calories))
+        elves.append(Elf())
+        elves[-1].set_calories(current_calories)
         current_calories = []
 
 sorted_elves = sorted(elves, key=lambda x: x.get_calories_total(), reverse=True)
